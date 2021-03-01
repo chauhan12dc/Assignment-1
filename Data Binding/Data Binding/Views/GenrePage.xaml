@@ -18,11 +18,11 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <Label Text="{Binding todo}" TextColor="Black" FontSize="Large" Grid.Column="0" Grid.Row="0"/>
-                            
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <!--<Button Text="Logout" Clicked="logout" />-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>
