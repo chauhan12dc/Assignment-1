@@ -27,6 +27,9 @@ namespace Data_Binding
                 case "main":
                     MainPage = new NavigationPage(new AddGenre());
                     break;
+                case "list":
+                    MainPage = new NavigationPage(new GenrePage());
+                    break;
             }
         }
 

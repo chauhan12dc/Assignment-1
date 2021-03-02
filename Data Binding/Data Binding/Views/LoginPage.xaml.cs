@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace Data_Binding.Views
 {
@@ -13,7 +14,12 @@ namespace Data_Binding.Views
 
         private void login(object sender, EventArgs e)
         {
-            if (username.Text == "test" && password.Text == "test")
+            if (username.Text == "test" && password.Text == "test" && (!Preferences.ContainsKey("selectedGenre")))
+            {
+                App.Current.Properties["isLoggedIn"] = true;
+                assignment1.navigationMain("main");
+            }
+            else
             {
                 App.Current.Properties["isLoggedIn"] = true;
                 assignment1.navigationMain("main");
