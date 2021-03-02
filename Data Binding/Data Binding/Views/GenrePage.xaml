@@ -17,7 +17,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Label Text="{Binding todo}" TextColor="Black" FontSize="Large" Grid.Column="0" Grid.Row="0"/>
+                            <Label Text="{Binding todo}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Large" Grid.Column="0" Grid.Row="0"/>
                             
                         </Grid>
                     </DataTemplate>
