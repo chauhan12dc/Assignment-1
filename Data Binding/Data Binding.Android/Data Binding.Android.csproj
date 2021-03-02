@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -90,7 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data Binding\Data Binding.csproj">
-      <Project>{27DA5FEA-D1CA-456C-AFBE-18F123D73920}</Project>
+      <Project>{4CA3EFC4-D2EF-4F67-BB21-7F642E6F0CCC}</Project>
       <Name>Data Binding</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,14 +1,5 @@
-﻿using Data_Binding.Models;
-using Data_Binding.ViewModels;
-using Data_Binding.Views;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Data_Binding.ViewModels;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Data_Binding.Views
 {
