@@ -1,21 +1,29 @@
-﻿using Data_Binding.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace Data_Binding.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        private App assignment1 = Application.Current as App;
         public LoginPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+        }
+
+        private void login(object sender, EventArgs e)
+        {
+            if (username.Text == "test" && password.Text == "test" && (!Preferences.ContainsKey("selectedGenre")))
+            {
+                App.Current.Properties["isLoggedIn"] = true;
+                assignment1.navigationMain("main");
+            }
+            else
+            {
+                App.Current.Properties["isLoggedIn"] = true;
+                assignment1.navigationMain("main");
+            }
         }
     }
 }

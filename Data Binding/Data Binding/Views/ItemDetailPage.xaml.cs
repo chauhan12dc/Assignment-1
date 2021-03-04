@@ -1,5 +1,4 @@
 ﻿using Data_Binding.ViewModels;
-using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace Data_Binding.Views
