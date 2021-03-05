@@ -10,7 +10,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <CollectionView ItemsSource="{Binding todos}" BackgroundColor="White">
+            <CollectionView ItemsSource="{Binding todos}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -21,7 +21,7 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <Label Text="{Binding todo}" TextColor="Black" FontSize="Large" Grid.Column="0" Grid.Row="0"/>
+                            <Label Text="{Binding todo}" FontSize="Large" Grid.Column="0" Grid.Row="0"/>
 
                         </Grid>
                     </DataTemplate>
