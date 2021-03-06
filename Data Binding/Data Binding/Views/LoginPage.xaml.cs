@@ -12,17 +12,16 @@ namespace Data_Binding.Views
             InitializeComponent();
         }
 
-        private void login(object sender, EventArgs e)
+        async private void login(object sender, EventArgs e)
         {
-            if (username.Text == "test" && password.Text == "test" && (!Preferences.ContainsKey("selectedGenre")))
+            if (username.Text == "test" && password.Text == "test")
             {
                 App.Current.Properties["isLoggedIn"] = true;
                 assignment1.navigationMain("main");
             }
             else
             {
-                App.Current.Properties["isLoggedIn"] = true;
-                assignment1.navigationMain("main");
+                await DisplayAlert("Alert", "You have entered wrong credentials", "Try Again!");
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using Data_Binding.Services;
 using Data_Binding.Views;
 using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -22,7 +23,7 @@ namespace Data_Binding
             switch (to)
             {
                 case "login":
-                    MainPage = new NavigationPage(new LoginPage());
+                    MainPage = new NavigationPage(new LoginPage()) { BarBackgroundColor = ColorConverters.FromHex("#1d96f0"), BarTextColor = Color.White };
                     break;
                 case "main":
                     MainPage = new NavigationPage(new AddGenre());
@@ -39,8 +40,8 @@ namespace Data_Binding
             Console.WriteLine(isLoggedIn);
             if (!isLoggedIn)
             {
-                MainPage = new NavigationPage(new LoginPage());
-            }
+                MainPage = new NavigationPage(new LoginPage()) { BarBackgroundColor = ColorConverters.FromHex("#1d96f0"), BarTextColor = Color.White };
+                }
             else
             {
                 MainPage = new NavigationPage(new AddGenre());
@@ -57,7 +58,7 @@ namespace Data_Binding
             Console.WriteLine(isLoggedIn);
             if (!isLoggedIn)
             {
-                MainPage = new NavigationPage(new LoginPage());
+                MainPage = new NavigationPage(new LoginPage()) { BarBackgroundColor = ColorConverters.FromHex("#1d96f0"), BarTextColor = Color.White };
             }
             else
             {
