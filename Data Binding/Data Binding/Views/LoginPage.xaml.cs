@@ -14,7 +14,11 @@ namespace Data_Binding.Views
 
         async private void login(object sender, EventArgs e)
         {
-            if (username.Text == "test" && password.Text == "test")
+            if (username.Text == null|| password.Text == null)
+            {
+                await DisplayAlert("Alert", "Both the fields are required", "Cancel");
+            }
+            else if (username.Text == "test" && password.Text == "test")
             {
                 App.Current.Properties["isLoggedIn"] = true;
                 assignment1.navigationMain("main");
