@@ -36,12 +36,12 @@ namespace Data_Binding
 
         protected override void OnStart()
         {
-            var isLoggedIn = App.Current.Properties.ContainsKey("isLoggedIn") ? (bool)App.Current.Properties["isLoggedIn"] : false;
+            var isLoggedIn = App.Current.Properties.ContainsKey("username") && App.Current.Properties.ContainsKey("password");
             Console.WriteLine(isLoggedIn);
             if (!isLoggedIn)
             {
                 MainPage = new NavigationPage(new LoginPage()) { BarBackgroundColor = ColorConverters.FromHex("#1d96f0"), BarTextColor = Color.White };
-                }
+            }
             else
             {
                 MainPage = new NavigationPage(new AddGenre());
@@ -54,7 +54,7 @@ namespace Data_Binding
 
         protected override void OnResume()
         {
-            var isLoggedIn = App.Current.Properties.ContainsKey("isLoggedIn") ? (bool)App.Current.Properties["isLoggedIn"] : false;
+            var isLoggedIn = App.Current.Properties.ContainsKey("username") && App.Current.Properties.ContainsKey("password");
             Console.WriteLine(isLoggedIn);
             if (!isLoggedIn)
             {
