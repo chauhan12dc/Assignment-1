@@ -6,7 +6,7 @@ namespace Data_Binding.Models
 {
     class GenreModel
     {
-        public string todo { get; set; }
+        public string genreName{ get; set; }
 
     }
 }

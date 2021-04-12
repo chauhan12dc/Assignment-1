@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Data_Binding.ViewModels;
+using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Essentials;
@@ -16,241 +18,70 @@ namespace Data_Binding.Views
         public AddGenre()
         {
             InitializeComponent();
+            // InitializeList();
+            BindingContext = new GenreViewModel();
         }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            if (selectedGenre.Count()==0)
+            Button button = (Button)sender;
+            String btnTxt = button.Text;
+
+            if (button.BackgroundColor.Equals(Color.Black))
+            {
+                button.BackgroundColor = Color.FromHex("74D2D0");
+                button.BorderColor = Color.Black;
+            }
+            else
+            {
+                button.BackgroundColor = Color.Black;
+                button.BorderColor = Color.White;
+            }
+        }
+
+        private void Next_Clicked(object sender, EventArgs e)
+        {
+            if (selectedGenre.Count() == 0)
             {
                 DisplayAlert("Alert!", "No Genre Selected", "dismiss");
                 return;
             }
 
-            String selectedGenreString = String.Join(",",selectedGenre);
+            String selectedGenreString = "\"";
+            selectedGenreString += String.Join("\",\"", selectedGenre);
+            selectedGenreString += "\"";
             Preferences.Set("selectedGenre", selectedGenreString);
             Navigation.PushAsync(new GenrePage());
-        }
 
-        private void Action_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Action");
-            }
-            else
-            {
-                selectedGenre.Remove("Action");
-            }
-        }
-        private void Animation_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Animation");
-            }
-            else
-            {
-                selectedGenre.Remove("Animation");
-            }
-        }
-        private void Adventure_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Adventure");
-            }
-            else
-            {
-                selectedGenre.Remove("Adventure");
-            }
-        }
-        private void Biography_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Biography");
-            }
-            else
-            {
-                selectedGenre.Remove("Biography");
-            }
-        }
-        private void Costume_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Costume");
-            }
-            else
-            {
-                selectedGenre.Remove("Costume");
-            }
-        }
-        private void Comedy_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Comedy");
-            }
-            else
-            {
-                selectedGenre.Remove("Comedy");
-            }
-        }
-        private void Romance_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Romance");
-            }
-            else
-            {
-                selectedGenre.Remove("Romance");
-            }
-        }
-        private void Horror_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Horror");
-            }
-            else
-            {
-                selectedGenre.Remove("Horror");
-            }
-        }
-        private void Scifi_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Scifi");
-            }
-            else
-            {
-                selectedGenre.Remove("Scifi");
-            }
-        }
-        private void Documentary_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Documentary");
-            }
-            else
-            {
-                selectedGenre.Remove("Documentary");
-            }
-        }
 
-        private void Crime_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Crime");
-            }
-            else
-            {
-                selectedGenre.Remove("Crime");
-            }
+            var client = new RestClient("https://content-guide.herokuapp.com/user-preferences");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbF9hZGRyZXNzIjoiYnJlbmRlbi5rZXZpbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6ImJyZW5kZW4iLCJleHAiOjE2MTgwOTM0NDAsImlhdCI6MTYxODA3MTg0MH0.3cAnFdjPhf_Z0Z4vn50BZt0sXRIWfWhNwbAzch4Oy6w");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("application/json", "{\"email_address\": \"brenden.kevin@gmail.com\",\"preferences\": [" + selectedGenreString + "]}", ParameterType.RequestBody);
+            //DisplayAlert("DD", "{\"email_address\": \"brenden.kevin@gmail.com\",\"preferences\": [" + selectedGenreString + "]}", "done");
+            IRestResponse response = client.Execute(request);
+            DisplayAlert(response.Content, response.StatusCode.ToString(), "Checking");
+
         }
-        private void Drama_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Drama");
-            }
-            else
-            {
-                selectedGenre.Remove("Drama");
-            }
-        }
-        private void Family_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Family");
-            }
-            else
-            {
-                selectedGenre.Remove("Family");
-            }
-        }
-        private void Fantasy_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Fantasy");
-            }
-            else
-            {
-                selectedGenre.Remove("Fantasy");
-            }
-        }
-        private void Gameshow_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Game-show");
-            }
-            else
-            {
-                selectedGenre.Remove("Game-show");
-            }
-        }
-        private void History_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("History");
-            }
-            else
-            {
-                selectedGenre.Remove("History");
-            }
-        }
-        private void Kungfu_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Kungfu");
-            }
-            else
-            {
-                selectedGenre.Remove("Kungfu");
-            }
-        }
-        private void Music_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Music");
-            }
-            else
-            {
-                selectedGenre.Remove("Music");
-            }
-        }
-        private void Sports_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Sports");
-            }
-            else
-            {
-                selectedGenre.Remove("Sports");
-            }
-        }
-        private void Thriller_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                selectedGenre.Add("Thriller");
-            }
-            else
-            {
-                selectedGenre.Remove("Thriller");
-            }
-        }
+        //private void InitializeList()
+        //{
+        //    Dictionary<int, int> already = new Dictionary<int, int>();
+        //    BubbleService service = new BubbleService();
+        //    Random r = new Random();
+        //    foreach (var item in service.vs)
+        //    {
+        //        Button a = new Button() {
+        //        Text = item,
+        //        CornerRadius = 100,
+        //        WidthRequest = 50,
+        //        HeightRequest = 20
+        //        };
+        //        a.Clicked += Button_Clicked;
+        //        ran.Children.Add(a, r.Next(0, 4), r.Next(0, 5));
+        //    }
+        //}
+
     }
 }

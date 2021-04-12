@@ -7,20 +7,20 @@ namespace Data_Binding.Services
     class GenreService
     {
         List<GenreModel> genreModelList = new List<GenreModel>();
-        
+        public List<string> vs = new List<string>() { "Action", "Animation", "Comedy", "Crime", "Drama", "Experimental", "Fantasy", "Historical", "Horror", "Romance", "Science", "Fiction", "Thriller" };
+
         public GenreService()
         {
-            List<String> selectedGenre = new List<string>(Preferences.Get("selectedGenre", "false").Split(','));
-            
-            foreach (String item in selectedGenre)
+            foreach (var item in vs)
             {
-                GenreModel todoModel = new GenreModel();
-                todoModel.todo = item;
-                genreModelList.Add(todoModel);
+                GenreModel model = new GenreModel();
+                model.genreName = item;
+                genreModelList.Add(model);
             }
+            
         }
         
-        public List<GenreModel> GetTodos()
+        public List<GenreModel> GetGenres()
         {
             return genreModelList;
         }

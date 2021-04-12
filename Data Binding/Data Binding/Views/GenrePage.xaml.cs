@@ -12,7 +12,7 @@ namespace Data_Binding.Views
         public GenrePage()
         {
             InitializeComponent();
-            BindingContext = new GenreViewModel();
+            //BindingContext = new GenreViewModel();
 
         }
 

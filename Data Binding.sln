@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data Binding.Android", "Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data Binding.iOS", "Data Binding\Data Binding.iOS\Data Binding.iOS.csproj", "{BBE7D210-91C0-44EE-AB51-0A3D7F2C6B7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data Binding", "Data Binding\Data Binding\Data Binding.csproj", "{4CA3EFC4-D2EF-4F67-BB21-7F642E6F0CCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data Binding", "Data Binding\Data Binding\Data Binding.csproj", "{4CA3EFC4-D2EF-4F67-BB21-7F642E6F0CCC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
