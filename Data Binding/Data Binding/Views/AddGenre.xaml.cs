@@ -60,12 +60,12 @@ namespace Data_Binding.Views
             var client = new RestClient("https://content-guide.herokuapp.com/user-preferences");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbF9hZGRyZXNzIjoiYnJlbmRlbi5rZXZpbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6ImJyZW5kZW4iLCJleHAiOjE2MTgwOTM0NDAsImlhdCI6MTYxODA3MTg0MH0.3cAnFdjPhf_Z0Z4vn50BZt0sXRIWfWhNwbAzch4Oy6w");
+            request.AddHeader("Authorization", "Bearer "+assignment1.Properties["token"].ToString());
             request.AddHeader("Content-Type", "application/json");
-            request.AddParameter("application/json", "{\"email_address\": \"brenden.kevin@gmail.com\",\"preferences\": [" + selectedGenreString + "]}", ParameterType.RequestBody);
+            request.AddParameter("application/json", "{\"email_address\": \"theopussquad@gmail.com\",\"preferences\": [" + selectedGenreString + "]}", ParameterType.RequestBody);
             //DisplayAlert("DD", "{\"email_address\": \"brenden.kevin@gmail.com\",\"preferences\": [" + selectedGenreString + "]}", "done");
             IRestResponse response = client.Execute(request);
-            DisplayAlert(response.Content, response.StatusCode.ToString(), "Checking");
+            DisplayAlert("Successful!", response.StatusCode.ToString(), "Checking");
 
         }
 

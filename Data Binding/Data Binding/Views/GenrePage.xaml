@@ -1,33 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Data_Binding.Views.GenrePage">
+             x:Class="Data_Binding.Views.GenrePage"
+             Title="Home Screen">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Logout" Clicked="logout"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <CollectionView ItemsSource="{Binding models}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-
-                            <Label Text="Hello Welcome to Content Guide.." FontSize="Large" Grid.Column="0" Grid.Row="0"/>
-
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            
-        </Grid>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+            <Label Text="Hello!" FontSize="Large"/>
+            <Label Text="Welcome to Content Guide's Home Screen.."/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
