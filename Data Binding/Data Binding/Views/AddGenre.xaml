@@ -4,6 +4,11 @@
              Title="{Binding Title}"
              x:Class="Data_Binding.Views.AddGenre"
              x:Name="myPage">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" Clicked="logout"/>
+    </ContentPage.ToolbarItems>
+  
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">
             <StackLayout BackgroundColor="White" Orientation="Horizontal" Padding="10">
@@ -14,8 +19,7 @@
 
             <ListView HasUnevenRows="True" SeparatorColor="#74D2D0" SelectionMode="None" RowHeight="40" ItemsSource="{Binding vs}">
             </ListView>
-
-
+            
             <CollectionView ItemsSource="{Binding models}" 
                             BackgroundColor="White"
                             VerticalScrollBarVisibility="Always"

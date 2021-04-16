@@ -32,8 +32,7 @@ namespace Data_Binding.ViewModels
             vs.Add("No Genre Selected");
             models = service.GetGenres();
             clickChanged = new Command((obj) =>
-            {
-                       
+            {      
                 var button = obj as Button;
                
                 if (vs.Contains(button.Text))

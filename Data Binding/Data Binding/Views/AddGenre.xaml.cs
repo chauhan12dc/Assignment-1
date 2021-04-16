@@ -14,6 +14,7 @@ namespace Data_Binding.Views
     public partial class AddGenre : ContentPage
     {
         List<String> selectedGenre = new List<String>();
+        private App assignment1 = Application.Current as App;
 
         public AddGenre()
         {
@@ -31,11 +32,13 @@ namespace Data_Binding.Views
             {
                 button.BackgroundColor = Color.FromHex("74D2D0");
                 button.BorderColor = Color.Black;
+                selectedGenre.Remove(btnTxt);
             }
             else
             {
                 button.BackgroundColor = Color.Black;
                 button.BorderColor = Color.White;
+                selectedGenre.Add(btnTxt);
             }
         }
 
@@ -65,6 +68,13 @@ namespace Data_Binding.Views
             DisplayAlert(response.Content, response.StatusCode.ToString(), "Checking");
 
         }
+
+        private void logout(object sender, EventArgs e)
+        {
+            App.Current.Properties["isLoggedIn"] = false;
+            assignment1.navigationMain("login");
+        }
+
         //private void InitializeList()
         //{
         //    Dictionary<int, int> already = new Dictionary<int, int>();
