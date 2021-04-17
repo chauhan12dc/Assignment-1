@@ -31,14 +31,14 @@ namespace Data_Binding.Views
             {
                 //button.BackgroundColor = Color.FromHex("1d96f0");
                 button.TextColor = Color.FromHex("#ff0095");
-                selectedGenre.Remove(btnTxt);
+                selectedGenre.Add(btnTxt);
             }
             else
             {
                 //button.BackgroundColor = Color.White;
                 //button.BorderColor = Color.FromHex("1d96f0");
                 button.TextColor = Color.FromHex("#1d96f0");
-                selectedGenre.Add(btnTxt);
+                selectedGenre.Remove(btnTxt);
             }
         }
 

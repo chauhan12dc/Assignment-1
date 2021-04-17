@@ -47,20 +47,3 @@
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
-
-<!--<ListView x:Name="selected" HorizontalOptions="Center"/>-->
-<!--<Grid VerticalOptions="FillAndExpand" x:Name="ran">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-            </Grid>-->
