@@ -1,5 +1,5 @@
-﻿using Data_Binding.ViewModels;
-using RestSharp;
+﻿using Data_Binding.Services;
+using Data_Binding.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,6 @@ namespace Data_Binding.Views
         public AddGenre()
         {
             InitializeComponent();
-            // InitializeList();
             BindingContext = new GenreViewModel();
         }
 
@@ -28,28 +27,30 @@ namespace Data_Binding.Views
             Button button = (Button)sender;
             String btnTxt = button.Text;
 
-            if (button.BackgroundColor.Equals(Color.Black))
+            if (button.TextColor.Equals(Color.FromHex("#1d96f0")))
             {
-                button.BackgroundColor = Color.FromHex("74D2D0");
-                button.BorderColor = Color.Black;
-                selectedGenre.Remove(btnTxt);
+                //button.BackgroundColor = Color.FromHex("1d96f0");
+                button.TextColor = Color.FromHex("#ff0095");
+                selectedGenre.Add(btnTxt);
             }
             else
             {
-                button.BackgroundColor = Color.Black;
-                button.BorderColor = Color.White;
-                selectedGenre.Add(btnTxt);
+                //button.BackgroundColor = Color.White;
+                //button.BorderColor = Color.FromHex("1d96f0");
+                button.TextColor = Color.FromHex("#1d96f0");
+                selectedGenre.Remove(btnTxt);
             }
         }
 
         private void Next_Clicked(object sender, EventArgs e)
         {
+            Console.WriteLine(!selectedGenre.Any());
+            Console.WriteLine(selectedGenre.Count());
             if (selectedGenre.Count() == 0)
             {
-                DisplayAlert("Alert!", "No Genre Selected", "dismiss");
+                DisplayAlert("Alert!", "No Genre Selected", "Dismiss");
                 return;
             }
-
             String selectedGenreString = "\"";
             selectedGenreString += String.Join("\",\"", selectedGenre);
             selectedGenreString += "\"";
@@ -57,16 +58,10 @@ namespace Data_Binding.Views
             Navigation.PushAsync(new GenrePage());
 
 
-            var client = new RestClient("https://content-guide.herokuapp.com/user-preferences");
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", "Bearer "+assignment1.Properties["token"].ToString());
-            request.AddHeader("Content-Type", "application/json");
-            request.AddParameter("application/json", "{\"email_address\": \"theopussquad@gmail.com\",\"preferences\": [" + selectedGenreString + "]}", ParameterType.RequestBody);
-            //DisplayAlert("DD", "{\"email_address\": \"brenden.kevin@gmail.com\",\"preferences\": [" + selectedGenreString + "]}", "done");
-            IRestResponse response = client.Execute(request);
-            DisplayAlert("Successful!", response.StatusCode.ToString(), "Checking");
-
+            NetworkCalls networkcall = new NetworkCalls();
+            networkcall.saveUserPreferences(assignment1.Properties["token"].ToString(), assignment1.Properties["username"].ToString(), selectedGenreString);
+            DisplayAlert("", "Your preferences have been synchronized", "Proceed");
+            
         }
 
         private void logout(object sender, EventArgs e)
@@ -74,24 +69,6 @@ namespace Data_Binding.Views
             App.Current.Properties["isLoggedIn"] = false;
             assignment1.navigationMain("login");
         }
-
-        //private void InitializeList()
-        //{
-        //    Dictionary<int, int> already = new Dictionary<int, int>();
-        //    BubbleService service = new BubbleService();
-        //    Random r = new Random();
-        //    foreach (var item in service.vs)
-        //    {
-        //        Button a = new Button() {
-        //        Text = item,
-        //        CornerRadius = 100,
-        //        WidthRequest = 50,
-        //        HeightRequest = 20
-        //        };
-        //        a.Clicked += Button_Clicked;
-        //        ran.Children.Add(a, r.Next(0, 4), r.Next(0, 5));
-        //    }
-        //}
 
     }
 }

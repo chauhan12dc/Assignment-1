@@ -90,11 +90,19 @@ namespace Data_Binding.ViewModels
                 NetworkCalls networkCalls = new NetworkCalls();
                 string token = networkCalls.Login(username, password);
                 Console.WriteLine(token);
-                Application.Current.Properties["username"] = username;
-                Application.Current.Properties["password"] = password;
-                Application.Current.Properties["token"] = token;
-                await Application.Current.SavePropertiesAsync();
-                assignment1.navigationMain("main");
+                if (token != "null")
+                {
+                    Application.Current.Properties["username"] = username;
+                    Application.Current.Properties["password"] = password;
+                    Application.Current.Properties["token"] = token;
+                    await Application.Current.SavePropertiesAsync();
+                    assignment1.navigationMain("main");
+                }
+                else
+                {
+                    Password = "";
+                    await Nav.Shared.DisplayAlertAsync("Alert", "There was an issue logging you in. Re-check the email address and/or password", "Try again");
+                }
             }
             else
             {
@@ -104,20 +112,4 @@ namespace Data_Binding.ViewModels
             }
         }
     }
-
-    //public class LoginViewModel : BaseViewModel
-    //{
-    //    public Command LoginCommand { get; }
-
-    //    public LoginViewModel()
-    //    {
-    //        LoginCommand = new Command(OnLoginClicked);
-    //    }
-
-    //    private async void OnLoginClicked(object obj)
-    //    {
-    //        // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-    //        await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
-    //    }
-    //}
 }

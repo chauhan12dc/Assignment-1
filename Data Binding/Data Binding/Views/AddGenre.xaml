@@ -6,16 +6,16 @@
              x:Name="myPage">
     
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Logout" Clicked="logout"/>
+        <ToolbarItem Text="Next" Clicked="Next_Clicked"/>
     </ContentPage.ToolbarItems>
   
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">
             <StackLayout BackgroundColor="White" Orientation="Horizontal" Padding="10">
-                <Label Text="Select genre you love!" FontSize="Title" TextColor="Black" Padding="0,20,0,0" />
-                <Button Text="->" BackgroundColor="#74D2D0" HorizontalOptions="EndAndExpand" CornerRadius="30" WidthRequest="60" HeightRequest="60" FontSize="30" BorderColor="Black" BorderWidth="2" Clicked="Next_Clicked"/>
+                <Label Text="Select the genre that interests you" FontSize="Title" TextColor="Black" Padding="0,20,0,0" />
+            
             </StackLayout>
-            <Label Text="Choose a genre for personalized movie recommendation 😊" TextColor="#35393C" Padding="10,0,0,0"  />
+            <Label Text="Select genres from below for personalized recommendations" TextColor="#35393C" Padding="10,0,0,0"  />
 
             <ListView HasUnevenRows="True" SeparatorColor="#74D2D0" SelectionMode="None" RowHeight="40" ItemsSource="{Binding vs}">
             </ListView>
@@ -24,7 +24,7 @@
                             BackgroundColor="White"
                             VerticalScrollBarVisibility="Always"
                             FlowDirection="LeftToRight"
-                            Margin="0,150,0,0" >
+                            Margin="0,50,0,0" >
 
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Span="4" Orientation="Vertical"></GridItemsLayout>
@@ -39,7 +39,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Button Text="{Binding genreName}" x:Name="myButton" Clicked="Button_Clicked" Command="{Binding BindingContext.clickChanged ,Source={x:Reference myPage}}" CommandParameter="{x:Reference myButton}" HorizontalOptions="Center" CornerRadius="100" BorderColor="Black" BackgroundColor="#74D2D0" BorderWidth="2" HeightRequest="50"/>
+                            <Button Text="{Binding genreName}" TextColor="#1d96f0" x:Name="myButton" Clicked="Button_Clicked" Command="{Binding BindingContext.clickChanged ,Source={x:Reference myPage}}" CommandParameter="{x:Reference myButton}" HorizontalOptions="Center" CornerRadius="100" BackgroundColor="White" BorderWidth="2" HeightRequest="50"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -47,20 +47,3 @@
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
-
-<!--<ListView x:Name="selected" HorizontalOptions="Center"/>-->
-<!--<Grid VerticalOptions="FillAndExpand" x:Name="ran">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-            </Grid>-->
