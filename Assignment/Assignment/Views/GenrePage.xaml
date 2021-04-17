@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Assignment.Views.GenrePage"
+             Title="Home Screen">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" Clicked="logout"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+            <Label Text="Hello!" FontSize="Large"/>
+            <Label Text="Welcome to Content Guide's Home Screen.."/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
