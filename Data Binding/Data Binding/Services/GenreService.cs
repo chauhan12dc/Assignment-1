@@ -7,7 +7,7 @@ namespace Data_Binding.Services
     class GenreService
     {
         List<GenreModel> genreModelList = new List<GenreModel>();
-        public List<string> vs = new List<string>() { "Action", "Animation", "Comedy", "Crime", "Drama", "Experimental", "Fantasy", "Historical", "Horror", "Romance", "Science", "Fiction", "Thriller" };
+        public List<string> vs = new List<string>() { "Action", "Animation", "Comedy", "Crime", "Drama", "English", "Fantasy", "Historical", "Horror", "Romance", "Science", "Fiction", "Thriller" };
 
         public GenreService()
         {
